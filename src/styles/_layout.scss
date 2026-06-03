@@ -1,0 +1,36 @@
+@use 'variables' as *;
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing;
+}
+
+.site-header {
+  padding: $spacing 0;
+  border-bottom: 1px solid $color-border;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo {
+  font-size: 1.5rem;
+  color: $color-primary;
+}
+
+.main-nav {
+  display: flex;
+  gap: $spacing;
+}
+
+.site-footer {
+  margin-top: 4rem;
+  padding: $spacing * 2 0;
+  border-top: 1px solid $color-border;
+  color: $color-text-light;
+  font-size: 0.875rem;
+}
