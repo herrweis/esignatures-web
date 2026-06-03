@@ -3,28 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eSignatures</title>
+  <title>Sample Consulting Agreement | eSignatures</title>
 </head>
 <body>
+  <!-- Reusable SVG icon defs -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="icon-arrow" viewBox="0 0 20 20" fill="none">
+        <path d="M3 10h13M11 4.5 16.5 10 11 15.5" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24" fill="none">
+        <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.3"/>
+        <path d="m8 12.4 2.6 2.6L16 9.2" stroke="currentColor" stroke-width="1.3"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+    </defs>
+  </svg>
+
   <header class="site-header">
-    <div class="container">
-      <h1 class="logo">eSignatures</h1>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="/" aria-label="eSignatures.com">
+        <img src="/images/logo.svg" alt="eSignatures.com">
+      </a>
+
       <nav class="main-nav">
-        <a href="/">Home</a>
+        <a class="main-nav__link" href="#">Features</a>
+        <a class="main-nav__link" href="#pricing">Pricing</a>
+        <a class="main-nav__link" href="#">API</a>
       </nav>
+
+      <div class="site-header__actions">
+        <a class="link-plain" href="#">Sign in</a>
+        <a class="btn--pill" href="#">Free trial</a>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="hero">
-      <h2>Welcome to eSignatures</h2>
-      <p>Prototype is up and running.</p>
+  <main>
+    <!-- Hero: video on the left half, body on the right; both scroll with the page -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__media">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto"
+               poster="/video/hero-poster.jpg">
+          <source src="/video/hero.webm" type="video/webm">
+          <source src="/video/hero.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="hero__body">
+        <h1 class="hero__title" id="hero-title">
+          You send,<br>they sign.<span>Done.</span>
+        </h1>
+        <div class="hero__cta">
+          <a class="btn btn--lg btn--primary" href="#">
+            Start your free trial
+            <svg class="icon"><use href="#icon-arrow"/></svg>
+          </a>
+          <p class="hero__lede">
+            Made for teams sending thousands of contracts a month. Start from the
+            dashboard in minutes, or send your first contract straight from the API.
+            You pay for what you send and nothing else.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Compliance badges -->
+    <section class="section--tight" aria-label="Compliance certifications">
+      <div class="container">
+        <div class="badges">
+          <div class="badge">
+            <div class="badge__img"><img src="/images/badge-ca.png" alt=""></div>
+            <p class="badge__label">CA UECA Compliant</p>
+          </div>
+          <div class="badge-divider" aria-hidden="true"></div>
+          <div class="badge">
+            <div class="badge__img"><img src="/images/badge-iso.png" alt=""></div>
+            <p class="badge__label">ISO 27001<br>Certified</p>
+          </div>
+          <div class="badge-divider" aria-hidden="true"></div>
+          <div class="badge">
+            <div class="badge__img"><img src="/images/badge-us.png" alt=""></div>
+            <p class="badge__label">US UETA &amp; ESIGN<br>Act Compliant</p>
+          </div>
+          <div class="badge-divider" aria-hidden="true"></div>
+          <div class="badge">
+            <div class="badge__img"><img src="/images/badge-hipaa.png" alt=""></div>
+            <p class="badge__label">HIPAA Compliant</p>
+          </div>
+          <div class="badge-divider" aria-hidden="true"></div>
+          <div class="badge">
+            <div class="badge__img"><img src="/images/badge-eu.png" alt=""></div>
+            <p class="badge__label">EU eIDAS/GDPR Compliant</p>
+          </div>
+          <div class="badge-divider" aria-hidden="true"></div>
+          <div class="badge">
+            <div class="badge__img"><img src="/images/badge-au.png" alt=""></div>
+            <p class="badge__label">AU ET Act<br>Compliant</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Try it yourself -->
+    <section class="section" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="demo">
+          <h2 class="demo__title" id="demo-title">Try it yourself</h2>
+          <p class="demo__subtitle">Send yourself a demo contract and see how fast signing feels.</p>
+          <form class="demo__form" action="#" method="post">
+            <div class="demo__field">
+              <input class="demo__input" type="text" id="recipient"
+                     placeholder="Your email or phonenumber" aria-label="Recipient">
+              <label class="demo__label" for="recipient">Recipient</label>
+            </div>
+            <button class="btn btn--lg btn--primary" type="submit">
+              Send demo contract
+              <svg class="icon"><use href="#icon-arrow"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Templates -->
+    <section class="section" aria-labelledby="templates-title">
+      <div class="container">
+        <div class="templates">
+          <div class="templates__body">
+            <div>
+              <h2 class="templates__title" id="templates-title">Templates that take minutes, not days.</h2>
+              <p class="templates__text">
+                Build a reusable template once, send it thousands of times. Add placeholders
+                for the details that change, prefill what you already know, and send. No
+                re-uploading or reformatting.
+              </p>
+            </div>
+            <hr class="templates__rule">
+            <div class="templates__pager">
+              <span class="templates__count">3/3</span>
+              <div class="templates__arrows">
+                <button type="button" aria-label="Previous">
+                  <svg class="icon icon--flip"><use href="#icon-arrow"/></svg>
+                </button>
+                <button type="button" aria-label="Next">
+                  <svg class="icon"><use href="#icon-arrow"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="templates__media">
+            <img src="/images/templates.png" alt="Creating a contract from a template in the eSignatures editor">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing" aria-labelledby="pricing-price">
+      <div class="container">
+        <div class="pricing">
+          <div class="pricing__headline">
+            <span class="pricing__price" id="pricing-price">$0.79</span>
+            <hr class="pricing__rule">
+            <span class="pricing__per"><span>per</span><span>contract</span></span>
+          </div>
+          <div class="pricing__footer">
+            <ul class="checklist">
+              <li><svg class="icon"><use href="#icon-check"/></svg>No monthly fees</li>
+              <li><svg class="icon"><use href="#icon-check"/></svg>No usage limits</li>
+              <li><svg class="icon"><use href="#icon-check"/></svg>All features included</li>
+            </ul>
+            <a class="btn btn--lg btn--outline" href="#">
+              See detailed pricing
+              <svg class="icon"><use href="#icon-arrow"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2026 eSignatures</p>
+      <p>&copy; 2026 eSignatures.com</p>
+      <p>You send, they sign. Done.</p>
     </div>
   </footer>
 

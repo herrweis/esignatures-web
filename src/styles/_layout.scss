@@ -1,36 +1,100 @@
 @use 'variables' as *;
 
 .container {
-  max-width: $container-max-width;
+  width: 100%;
+  max-width: $content-max;
   margin: 0 auto;
-  padding: 0 $spacing;
+  padding: 0 $gutter;
 }
 
+// ---- Header / top nav (fixed; aligns to the page grid) -------------------
 .site-header {
-  padding: $spacing 0;
-  border-bottom: 1px solid $color-border;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  padding: 28px 0;
+}
+
+.site-header__inner {
+  @include page-grid;
+  grid-auto-flow: column;
+  align-items: center;
+}
+
+.site-header__logo {
+  grid-column: 1 / span 3;
+  display: block;
+  width: 189px;
+  height: 25px;
+}
+
+.main-nav {
+  grid-column: 7 / span 3;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.main-nav__link {
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1;
+  color: $black;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.site-header__actions {
+  grid-column: 11 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+// ---- Section rhythm ------------------------------------------------------
+.section {
+  padding: clamp(72px, 9vw, 128px) 0;
+}
+
+.section--tight {
+  padding: clamp(48px, 6vw, 88px) 0;
+}
+
+.site-footer {
+  padding: 96px 0 64px;
+  color: rgba($black, 0.45);
+  font-size: 14px;
 
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
   }
 }
 
-.logo {
-  font-size: 1.5rem;
-  color: $color-primary;
+// Below the grid's natural breakpoint, fall back to a simple flex header so
+// logo and actions still fit cleanly on narrow viewports.
+@media (max-width: 1100px) {
+  .site-header__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .main-nav {
+    margin: 0 auto;
+  }
 }
 
-.main-nav {
-  display: flex;
-  gap: $spacing;
-}
-
-.site-footer {
-  margin-top: 4rem;
-  padding: $spacing * 2 0;
-  border-top: 1px solid $color-border;
-  color: $color-text-light;
-  font-size: 0.875rem;
+@media (max-width: 900px) {
+  .main-nav {
+    display: none;
+  }
 }
