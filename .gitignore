@@ -1,3 +1,6 @@
 node_modules
 dist
 .DS_Store
+
+# Source videos (too big for GitHub — only the optimized public/video assets are tracked)
+media-src/
