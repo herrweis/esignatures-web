@@ -79,10 +79,10 @@
 
 .hero__video {
   position: fixed;
-  top: 5vh;
+  top: 0;
   left: 0;
   width: 50vw;
-  height: 95vh;
+  height: 100vh;
   z-index: 1;
   object-fit: cover;
   will-change: transform, opacity;
