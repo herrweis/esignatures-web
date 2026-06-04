@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sample Consulting Agreement | eSignatures</title>
+  <title>eSignatures | Mobile-friendly, simple and fast online signatures.</title>
 </head>
 <body>
   <!-- Reusable SVG icon defs -->
@@ -41,37 +41,38 @@
   </header>
 
   <main>
-    <!-- Hero: video on the left half, body on the right; both scroll with the page -->
+    <!-- Hero: video on the left half (fixed), body on the right.
+         Compliance ribbon sits in the same section below the fold so the user
+         scrolls into it while the video stays pinned. -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__media">
-        <video class="hero__video" autoplay muted loop playsinline preload="auto"
-               poster="/video/hero-poster.jpg">
-          <source src="/video/hero.webm" type="video/webm">
-          <source src="/video/hero.mp4" type="video/mp4">
-        </video>
-      </div>
+      <div class="hero__top">
+        <div class="hero__media">
+          <video class="hero__video" autoplay muted loop playsinline preload="auto"
+                 poster="/video/hero-poster.png">
+            <source src="/video/hero.webm" type="video/webm">
+            <source src="/video/hero.mp4" type="video/mp4; codecs=hvc1">
+          </video>
+        </div>
 
-      <div class="hero__body">
-        <h1 class="hero__title" id="hero-title">
-          You send,<br>they sign.<span>Done.</span>
-        </h1>
-        <div class="hero__cta">
-          <a class="btn btn--lg btn--primary" href="#">
-            Start your free trial
-            <svg class="icon"><use href="#icon-arrow"/></svg>
-          </a>
-          <p class="hero__lede">
-            Made for teams sending thousands of contracts a month. Start from the
-            dashboard in minutes, or send your first contract straight from the API.
-            You pay for what you send and nothing else.
-          </p>
+        <div class="hero__body">
+          <h1 class="hero__title" id="hero-title">
+            You send,<br>they sign.<span>It's that simple.</span>
+          </h1>
+          <div class="hero__cta">
+            <a class="btn btn--lg btn--primary" href="#">
+              Start your free trial
+              <svg class="icon"><use href="#icon-arrow"/></svg>
+            </a>
+            <p class="hero__lede">
+              Made for teams sending thousands of contracts a month. Start from the
+              dashboard in minutes, or send your first contract straight from the API.
+              You pay for what you send and nothing else.
+            </p>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- Compliance badges -->
-    <section class="section--tight" aria-label="Compliance certifications">
-      <div class="container">
+      <div class="hero__compliance" aria-label="Compliance certifications">
         <div class="badges">
           <div class="badge">
             <div class="badge__img"><img src="/images/badge-ca.png" alt=""></div>
@@ -127,34 +128,32 @@
       </div>
     </section>
 
-    <!-- Templates -->
+    <!-- Templates: image left (replaces the fixed hero video), body right -->
     <section class="section" aria-labelledby="templates-title">
-      <div class="container">
-        <div class="templates">
-          <div class="templates__body">
-            <div>
-              <h2 class="templates__title" id="templates-title">Templates that take minutes, not days.</h2>
-              <p class="templates__text">
-                Build a reusable template once, send it thousands of times. Add placeholders
-                for the details that change, prefill what you already know, and send. No
-                re-uploading or reformatting.
-              </p>
-            </div>
-            <hr class="templates__rule">
-            <div class="templates__pager">
-              <span class="templates__count">3/3</span>
-              <div class="templates__arrows">
-                <button type="button" aria-label="Previous">
-                  <svg class="icon icon--flip"><use href="#icon-arrow"/></svg>
-                </button>
-                <button type="button" aria-label="Next">
-                  <svg class="icon"><use href="#icon-arrow"/></svg>
-                </button>
-              </div>
-            </div>
+      <div class="templates">
+        <div class="templates__media">
+          <img src="/images/contract_editing_dummy.png" alt="Creating a contract from a template in the eSignatures editor">
+        </div>
+        <div class="templates__body">
+          <div>
+            <h2 class="templates__title" id="templates-title">Templates that take minutes, not days.</h2>
+            <p class="templates__text">
+              Build a reusable template once, send it thousands of times. Add placeholders
+              for the details that change, prefill what you already know, and send. No
+              re-uploading or reformatting.
+            </p>
           </div>
-          <div class="templates__media">
-            <img src="/images/templates.png" alt="Creating a contract from a template in the eSignatures editor">
+          <hr class="templates__rule">
+          <div class="templates__pager">
+            <span class="templates__count">3/3</span>
+            <div class="templates__arrows">
+              <button type="button" aria-label="Previous">
+                <svg class="icon icon--flip"><use href="#icon-arrow"/></svg>
+              </button>
+              <button type="button" aria-label="Next">
+                <svg class="icon"><use href="#icon-arrow"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -188,7 +187,7 @@
   <footer class="site-footer">
     <div class="container">
       <p>&copy; 2026 eSignatures.com</p>
-      <p>You send, they sign. Done.</p>
+      <p>The next generation of online signatures.</p>
     </div>
   </footer>
 

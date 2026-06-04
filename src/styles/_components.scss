@@ -58,23 +58,36 @@
 .hero {
   position: relative;
   display: flex;
+  flex-direction: column;
+}
+
+// Top of the hero — video left, body right — fills the first viewport.
+.hero__top {
+  display: flex;
   align-items: stretch;
   min-height: 100vh;
   min-height: 100svh;
 }
 
+// Left half of the hero acts as a flex spacer so the body still lays out on
+// the right. The video itself is fixed to the viewport and translated upward
+// by the scroll handler in main.js when the templates section approaches.
 .hero__media {
   flex: 0 0 50%;
   width: 50%;
-  background: $bg-dark;
-  overflow: hidden;
 }
 
 .hero__video {
-  display: block;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  top: 5vh;
+  left: 0;
+  width: 50vw;
+  height: 95vh;
+  z-index: 1;
   object-fit: cover;
+  will-change: transform, opacity;
+  // Don't capture clicks meant for the demo form etc. underneath the left half.
+  pointer-events: none;
 }
 
 // Right half holds the headline + CTA. Left padding = half of the page grid's
@@ -85,13 +98,14 @@
   flex: 1 1 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 120px $gutter 64px $col-gap;
+  justify-content: space-between;
+  
+  padding: 15vh $gutter 10vh $col-gap;
 }
 
 .hero__title {
   font-weight: $fw-medium;
-  font-size: clamp(56px, 8.7vw, 131px);
+  font-size: clamp(30px, 7vw, 131px);
   line-height: 0.8;
   letter-spacing: -0.02em;
 
@@ -104,21 +118,35 @@
 .hero__cta {
   display: flex;
   align-items: flex-start;
+  justify-content: space-between;
   gap: clamp(32px, 6vw, 108px);
   margin-top: clamp(40px, 7vw, 96px);
 }
 
 .hero__lede {
-  max-width: 348px;
-  font-size: 18px;
+  max-width: 500px;
+  font-size: clamp(18px, 1.3vw, 24px);
   line-height: 1.4;
 }
 
 // ---- Compliance badges ---------------------------------------------------
+// Compliance ribbon lives inside the hero, below the fold — the user scrolls
+// into it while the fixed video stays put. Large top padding pushes it well
+// past the first viewport.
+.hero__compliance {
+  @include page-grid;
+  padding-top: clamp(240px, 55vh, 600px);
+  padding-bottom: clamp(120px, 20vh, 300px);
+}
+
+
 .badges {
+  grid-column: 7 / -1;
   display: flex;
-  align-items: stretch;
+  flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 80px 0;
 }
 
 .badge {
@@ -126,7 +154,7 @@
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  width: 214px;
+  width: 30%;
   text-align: center;
 }
 
@@ -157,6 +185,15 @@
 }
 
 // ---- Try it yourself / demo form -----------------------------------------
+// Section is a full viewport tall and centers its content both horizontally
+// and vertically so the demo card sits in the middle of the screen.
+section[aria-labelledby="demo-title"] {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .demo {
   max-width: 955px;
   margin: 0 auto;
@@ -216,17 +253,44 @@
 }
 
 // ---- Templates -----------------------------------------------------------
+// Section is taller than one viewport so the image can stay pinned for a while
+// after the body text has scrolled past. The image itself is position: fixed —
+// it lives in the same footprint as the hero video and slides in from the left
+// (translateX) rather than scrolling up from below. JS translates it upward
+// (translateY) once the section's bottom catches up, releasing it.
+section[aria-labelledby="templates-title"] {
+  position: relative;
+  min-height: 150vh;
+  overflow: hidden;
+}
+
 .templates {
-  display: flex;
-  align-items: center;
-  gap: clamp(40px, 5vw, 72px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  min-height: 150vh;
+}
+
+.templates__media {
+  position: fixed;
+  top: 5vh;
+  left: 0;
+  width: 50vw;
+  height: 95vh;
+  z-index: 1;
+  transform: translateX(-100%);
+  will-change: transform;
+  pointer-events: none;
 }
 
 .templates__body {
-  flex: 0 0 38%;
+  grid-column: 2 / 3;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 27px;
+  min-height: 100vh;
+  padding: 0 $gutter 0 $col-gap;
 }
 
 .templates__title {
@@ -238,7 +302,7 @@
 
 .templates__text {
   margin-top: 53px;
-  font-size: 18px;
+  font-size: clamp(18px, 3vw, 24px);
   line-height: 1.4;
 }
 
@@ -282,15 +346,12 @@
   }
 }
 
-.templates__media {
-  flex: 1 1 0;
-  min-width: 0;
-
-  img {
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-  }
+.templates__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  border-radius: 4px;
 }
 
 // ---- Pricing -------------------------------------------------------------
@@ -360,24 +421,15 @@
 }
 
 // ---- Responsive ----------------------------------------------------------
-@media (max-width: 1100px) {
-  .badges {
-    flex-wrap: wrap;
-    gap: 40px 0;
-    justify-content: space-around;
-  }
-
-  .badge-divider {
-    display: none;
-  }
-
-  .badge {
-    width: 33%;
-  }
+// Dividers are hidden — badges always wrap into a 3×2 grid in cols 7-12.
+.badge-divider {
+  display: none;
 }
 
 @media (max-width: 820px) {
-  .hero {
+  // Unfix the video, stack everything vertically and let badges/demo/templates
+  // span the full width again.
+  .hero__top {
     flex-direction: column;
     min-height: 0;
   }
@@ -386,6 +438,15 @@
     flex: none;
     width: 100%;
     height: 56vh;
+  }
+
+  .hero__video {
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: none !important;
+    opacity: 1 !important;
   }
 
   .hero__body {
@@ -403,6 +464,41 @@
     max-width: none;
   }
 
+  .hero__compliance {
+    padding-top: clamp(64px, 12vw, 120px);
+    padding-bottom: clamp(48px, 10vw, 96px);
+  }
+
+  section[aria-labelledby="demo-title"],
+  section[aria-labelledby="templates-title"] {
+    min-height: 0;
+    display: block;
+    overflow: visible;
+  }
+
+  .templates {
+    min-height: 0;
+  }
+
+  .templates__media {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    transform: none !important;
+  }
+
+  .templates__body {
+    grid-column: auto;
+    min-height: 0;
+  }
+
+  .badges,
+  .demo {
+    grid-column: 1 / -1;
+  }
+
   .badge {
     width: 45%;
   }
@@ -411,10 +507,11 @@
     flex-direction: column;
   }
 
-  .templates__body,
-  .templates__media {
-    flex-basis: auto;
+  .templates__media,
+  .templates__body {
+    flex: none;
     width: 100%;
+    padding: 0;
   }
 
   .demo__form,
@@ -426,9 +523,5 @@
 
   .btn--lg {
     width: 100%;
-  }
-
-  .badge {
-    width: 45%;
   }
 }

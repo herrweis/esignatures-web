@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ffprobe -v error -show_streams /Users/andi/Repos/esignatures-web/media-src/hero_transparent.mov)",
+      "Bash(ffmpeg -hide_banner -encoders)",
+      "Bash(ffmpeg -y -i media-src/hero_transparent.mov -c:v libvpx-vp9 -pix_fmt yuva420p -b:v 1500k -row-mt 1 -tile-columns 2 -threads 8 -an public/video/hero.webm)",
+      "Bash(ffmpeg -y -i media-src/hero_transparent.mov -c:v hevc_videotoolbox -allow_sw 1 -alpha_quality 0.75 -tag:v hvc1 -pix_fmt yuva420p -b:v 2500k -an public/video/hero.mp4)"
+    ]
+  }
+}

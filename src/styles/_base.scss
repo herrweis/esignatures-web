@@ -45,7 +45,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: $black;
-  background: $bg;
+  background: $bg url('/images/background_light.jpg') center / cover no-repeat fixed;
 }
 
 img,

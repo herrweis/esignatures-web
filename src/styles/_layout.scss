@@ -15,6 +15,7 @@
   right: 0;
   z-index: 20;
   padding: 28px 0;
+  background: $bg url('/images/background_light.jpg') bottom / cover no-repeat fixed;
 }
 
 .site-header__inner {
@@ -63,6 +64,10 @@
 
 .section--tight {
   padding: clamp(48px, 6vw, 88px) 0;
+}
+
+.section--large {
+  padding: clamp(48px, 10vw, 400px) 0;
 }
 
 .site-footer {
